@@ -5,14 +5,18 @@ var express = require('express'),
 
 // mongoose instance connection url connection
 var db = require('./db/db');
-process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'development';
 const config = require('./config/config.js');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
-
+    var allowedOrigins = ['http://localhost:4200', 'https://beergardenedinburgh.azurewebsites.net'];
+    var origin = req.headers.origin;
+    if(allowedOrigins.indexOf(origin) > -1){
+         res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://beergardenedinburgh.azurewebsites.net');
+    //res.setHeader('Access-Control-Allow-Origin', global.gConfig.webAppUri);
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

@@ -2,11 +2,13 @@
   "development": {
     "config_id": "development",
     "node_port": 3000,
-    "database": "mongodb+srv://turbo:BanterBoi28@turbo0-z8dtl.azure.mongodb.net/beer_garden"
+    "database": "mongodb+srv://turbo:BanterBoi28@turbo0-z8dtl.azure.mongodb.net/beer_garden",
+    "webAppUri":"http://localhost:4200"
   },
   "production": {
     "config_id": "production",
     "node_port": 8080,
-    "database": "mongodb+srv://turbo:BanterBoi28@turbo0-z8dtl.azure.mongodb.net/beer_garden"
+    "database": "mongodb+srv://turbo:BanterBoi28@turbo0-z8dtl.azure.mongodb.net/beer_garden",
+    "webAppUri":"https://beergardenedinburgh.azurewebsites.net"
   }
 }
