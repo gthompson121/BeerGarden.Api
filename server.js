@@ -5,7 +5,7 @@ var express = require('express'),
 
 // mongoose instance connection url connection
 var db = require('./db/db');
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';
 const config = require('./config/config.js');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
