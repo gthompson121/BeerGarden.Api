@@ -1,6 +1,9 @@
 ﻿'use strict';
 module.exports = function (app) {
     var venueList = require('../controllers/venueController');
+    
+    app.route('/test')
+        .get(venueList.test);
 
     // venue Routes
     app.route('/venues')

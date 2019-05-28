@@ -2,6 +2,10 @@
 
 const Venue = require('../models/venueModel');
 
+exports.test =function (req, res) {
+        res.json('This is a test string');
+};
+
 exports.list_all_venues = function (req, res) {
     Venue.find().exec(function (err, venues) {
         if (err) {

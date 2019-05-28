@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(function (req, res, next) {
     var allowedOrigins = ['http://localhost:4200', 'https://beergardenedinburgh.azurewebsites.net'];
     var origin = req.headers.origin;
+    console.log(origin);
     if(allowedOrigins.indexOf(origin) > -1){
          res.setHeader('Access-Control-Allow-Origin', origin);
     }
