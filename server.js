@@ -10,16 +10,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
 
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    // if (typeof req.headers.origin !== 'undefined' && req.headers.origin)
-    // {
-    //     console.log(req.headers.origin);
-    //     res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-    // }
-    // else
-    // {
-    //     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    // }
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    if (typeof req.headers.origin !== 'undefined' && req.headers.origin)
+    {
+        console.log(req.headers.origin);
+    }
+    else
+    {
+        console.log(req.headers);
+    }
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
