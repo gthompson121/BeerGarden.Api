@@ -9,9 +9,19 @@ const config = require('./config/config.js');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', global.gConfig.webAppUri);
+    var allowedOrigins = ['http://127.0.0.1:4200', 'https://beergardenedinburgh.azurewebsites.net'];
+    if (typeof req.headers.origin !== 'undefined' && req.headers.origin)
+    {
+        var origin = req.headers.origin;
+        if(allowedOrigins.indexOf(origin) > -1){
+            // Website you wish to allow to connect
+            res.setHeader('Access-Control-Allow-Origin', origin);
+        }
+    }
+    else
+    {
+        res.setHeader('Access-Control-Allow-Origin', allowedOrigins[0]);
+    }
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
