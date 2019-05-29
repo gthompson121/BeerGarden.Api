@@ -10,18 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    if (typeof req.headers.origin !== 'undefined' && req.headers.origin)
-    {
-        console.log(req.headers.origin);
-    }
-    else
-    {
-        console.log(req.headers);
-    }
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', global.gConfig.webAppUri);
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
