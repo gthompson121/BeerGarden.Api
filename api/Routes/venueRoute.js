@@ -16,4 +16,5 @@ module.exports = function (app) {
         .delete(venueList.delete_a_venue);
 
     app.route('/venues/geo').post(venueList.get_venues_geo);
+    app.route('/venues/near').post(venueList.get_near_venues);
 };

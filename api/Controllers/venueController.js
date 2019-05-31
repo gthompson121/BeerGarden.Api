@@ -59,6 +59,24 @@ exports.get_venues_geo = function (req, res) {
     });
 };
 
+exports.get_near_venues = function(req, res){
+    var geoOptions =  {
+        near: { type: "Point", coordinates: [req.body.lng, req.body.lat] },
+        distanceField: "distance",
+        spherical: false,
+        num: req.count
+    };
+
+    Venue.aggregate([{ "$geoNear": geoOptions }],
+        function(err,venues) {
+            if (err) {
+                return res.send(500, err);
+            }
+            res.json(venues);
+        }
+    );
+}
+
 exports.create_a_venue = function (req, res) {
    var new_venue = new Venue(req.body);
    new_venue.save(function (err, task) {
