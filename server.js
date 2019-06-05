@@ -30,6 +30,9 @@ app.use(function (req, res, next) {
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
 
+    // Set Content Type Allowed
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
     // Pass to next layer of middleware
     next();
 });
